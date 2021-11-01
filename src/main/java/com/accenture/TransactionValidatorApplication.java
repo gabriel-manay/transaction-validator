@@ -30,7 +30,7 @@ public class TransactionValidatorApplication {
 			
 			logger.info("Línea recibida: " + transaction.toString());
 			
-			addValidators(transaction);
+			//addValidators(transaction);
 			
 			boolean ok = transaction.validate();	
 			/*
@@ -42,9 +42,9 @@ public class TransactionValidatorApplication {
 		};
 			
 	}
-
+/*
 	private void addValidators(Transaction t) {
 		t.addValidator(new TransactionCodeValidator());
 	}
-
+*/
 }

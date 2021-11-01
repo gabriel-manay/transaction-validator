@@ -67,7 +67,7 @@ public class Transaction {
 		boolean result = true;
 		
 		for (IValidation iValidation : validations) {
-			result = iValidation.validate();
+			result = iValidation.validate(iValidation.getAttribute(this));
 		}
 		
 		return result;
