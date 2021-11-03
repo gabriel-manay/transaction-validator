@@ -1,24 +1,44 @@
 package com.accenture.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.accenture.validation.IValidation;
-import com.accenture.validation.TransactionCodeValidator;
+import com.accenture.validation.*;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Transaction {
-	
-	private Integer transactionCode;	//1-2
-	private Integer transactionCodeQualifier;	// 3
-	private Integer transactionComponentSequenceNumber;	// 4
-	private String accountNumber;	// 5-20
-	
+
+	private Integer transactionCode=99;	//1-2
+	private Integer transactionCodeQualifier=9;	// 3
+	private Integer transactionComponentSequenceNumber=9;	// 4
+	private String accountNumber="0000000000000000";	// 5-20
+
 	private List<IValidation> validations = new ArrayList<IValidation>();
-	
+
 	public Transaction() {
-		validations.add(new TransactionCodeValidator());		
+		validations.add(new TransactionCodeValidator());
+		validations.add(new TransactionCodeQualifierValidator());
+		validations.add(new TransactionComponentSequenceNumberValidator());
+		validations.add(new AccountNumberValidator());
 	}
-	
+
+	public Transaction(
+			Integer transactionCode,
+			Integer transactionCodeQualifier,
+			Integer transactionComponentSequenceNumber,
+			String accountNumber){
+		this.transactionCode = transactionCode;
+		this.transactionCodeQualifier = transactionCodeQualifier;
+		this.transactionComponentSequenceNumber = transactionComponentSequenceNumber;
+		this.accountNumber = accountNumber;
+		validations.add(new TransactionCodeValidator());
+		validations.add(new TransactionCodeQualifierValidator());
+		validations.add(new TransactionComponentSequenceNumberValidator());
+		validations.add(new AccountNumberValidator());
+	}
+
 	public List<IValidation> getValidations() {
 		return validations;
 	}
@@ -51,27 +71,35 @@ public class Transaction {
 	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
 	}
-	
+
 	public void addValidator(IValidation validator) {
 		this.getValidations().add(validator);
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Transaction [transactionCode=" + transactionCode + ", transactionCodeQualifier="
 				+ transactionCodeQualifier + ", transactionComponentSequenceNumber="
 				+ transactionComponentSequenceNumber + ", accountNumber=" + accountNumber + "]";
+	}*/
+
+	@Override
+	public String toString(){
+		return transactionCode + ","
+				+ transactionCodeQualifier+ ","
+				+ transactionComponentSequenceNumber + ","
+				+ accountNumber;
 	}
-	
+
 	public boolean validate() {
 		boolean result = true;
-		
+
 		for (IValidation iValidation : validations) {
-			result = iValidation.validate();
+			result = iValidation.validate(iValidation.getAttribute(this));
 		}
-		
+
 		return result;
 	}
-	
+
 
 }
