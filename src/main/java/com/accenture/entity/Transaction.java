@@ -1,6 +1,5 @@
 package com.accenture.entity;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +15,7 @@ public class Transaction {
 	private String accountNumber="0000000000000000";	// 5-20
 
 	private List<IValidation> validations = new ArrayList<IValidation>();
+	private List<String> invalidFields = new ArrayList<>();
 
 	public Transaction() {
 		validations.add(new TransactionCodeValidator());
@@ -92,13 +92,12 @@ public class Transaction {
 	}
 
 	public boolean validate() {
-		boolean result = true;
-
 		for (IValidation iValidation : validations) {
-			result = iValidation.validate(iValidation.getAttribute(this));
+			if(!iValidation.validate(iValidation.getAttribute(this))){
+				this.invalidFields.add(iValidation.getInvalidField().message());
+			};
 		}
-
-		return result;
+		return this.invalidFields.size() == 0;
 	}
 
 
