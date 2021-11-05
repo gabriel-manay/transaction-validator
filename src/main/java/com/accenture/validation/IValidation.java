@@ -1,6 +1,7 @@
 package com.accenture.validation;
 
 import com.accenture.entity.Transaction;
+import com.accenture.errorHandling.InvalidField;
 
 public interface IValidation {
 
@@ -8,4 +9,5 @@ public interface IValidation {
 
 	public Object getAttribute(Transaction transaction);
 
+	public InvalidField getInvalidField();
 }
