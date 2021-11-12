@@ -10,8 +10,12 @@ public class TransactionCodeValidator implements IValidation {
 
 	@Override
 	public boolean validate(Transaction transaction, Object value) {
-		Integer transactionCode= (Integer) value;
-		return transactionCode == 5 | transactionCode == 6 | transactionCode == 8;
+		Integer transactionCode = (Integer) value;
+		if(transactionCode == 5 | transactionCode == 6 | transactionCode == 8){
+			return true;
+		}
+		transaction.addInvalidFieldError("Invalid Transaction Code");
+		return false;
 	}
 
 	@Override

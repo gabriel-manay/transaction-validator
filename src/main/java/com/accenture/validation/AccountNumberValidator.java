@@ -18,24 +18,19 @@ public class AccountNumberValidator implements IValidation {
     public boolean validate(Transaction transaction, Object value) {
 
         String accountNumber = (String) value;
-        accountNumber.substring(0, 5);
+        Integer bin = Integer.parseInt(accountNumber.substring(0, 5));
         
         //	TODO añadir manejo de error
-        if (false) {
+        if (cardService.getCardByBIN(bin) == null) {
         	//	TODO cargar error de tabla maestra de errores
         	transaction.addInvalidFieldError("Invalid Account Number");
+            return false;
         }
-        
         return true;
     }
 
     @Override
     public Object getAttribute(Transaction transaction) {
         return transaction.getAccountNumber();
-    }
-
-    @Override
-    public InvalidField getInvalidField() {
-        return new InvalidAccountNumber();
     }
 }

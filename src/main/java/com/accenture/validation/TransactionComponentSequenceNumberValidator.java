@@ -13,7 +13,13 @@ public class TransactionComponentSequenceNumberValidator implements IValidation 
 
         Integer transactionComponentSequenceNumber = (Integer) value;
 
-        return transactionComponentSequenceNumber == 0;
+        //Por ahora sólo se trabaja la línea TCR 00 de cada transacción (Existe 00 - 07)
+        if(transactionComponentSequenceNumber == 0){
+            return true;
+        }
+
+        transaction.addInvalidFieldError("Invalid Transaction Component Sequence Number");
+        return false;
     }
 
     @Override

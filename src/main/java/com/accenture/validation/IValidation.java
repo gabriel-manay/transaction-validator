@@ -8,6 +8,4 @@ public interface IValidation {
 	public boolean validate(Transaction transaction, Object object);
 
 	public Object getAttribute(Transaction transaction);
-
-	public InvalidField getInvalidField();
 }

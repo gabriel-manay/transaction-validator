@@ -13,7 +13,11 @@ public class TransactionCodeQualifierValidator implements IValidation {
 
         Integer transactionCodeQualifier = (Integer) value;
 
-        return transactionCodeQualifier == 0;
+        if(transactionCodeQualifier == 0){
+            return true;
+        }
+        transaction.addInvalidFieldError("Invalid Transaction Code Qualifier");
+        return false;
     }
 
     @Override
