@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql:3306/demo
+    username: root
+    password: rootpw
+  cloud:
+    stream:
+      bindings:
+        validate-in-0:
+          destination: channel01
+        validate-out-0:
+          destination: channel02
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
