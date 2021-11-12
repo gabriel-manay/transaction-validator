@@ -3,8 +3,6 @@ package com.accenture.validation;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.accenture.entity.Transaction;
-import com.accenture.errorHandling.InvalidAccountNumber;
-import com.accenture.errorHandling.InvalidField;
 import com.accenture.service.ICardService;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 

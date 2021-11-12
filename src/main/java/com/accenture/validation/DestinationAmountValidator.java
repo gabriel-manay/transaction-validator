@@ -1,7 +1,7 @@
 package com.accenture.validation;
 
 import com.accenture.entity.Transaction;
-import com.accenture.errorHandling.InvalidField;
+
 
 public class DestinationAmountValidator implements IValidation{
     @Override

@@ -1,7 +1,7 @@
 package com.accenture.validation;
 
 import com.accenture.entity.Transaction;
-import com.accenture.errorHandling.InvalidField;
+
 
 public class DestinationCurrencyCodeValidator implements IValidation{
     @Override
@@ -14,8 +14,4 @@ public class DestinationCurrencyCodeValidator implements IValidation{
         return null;
     }
 
-    @Override
-    public InvalidField getInvalidField() {
-        return null;
-    }
 }
