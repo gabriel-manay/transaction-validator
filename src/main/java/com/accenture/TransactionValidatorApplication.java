@@ -52,11 +52,7 @@ public class TransactionValidatorApplication {
 
 			logger.info("Línea recibida: " + transaction);
 
-			//addValidators(transaction);
-
-			boolean ok = transaction.validate();
-
-			if (!ok) {
+			if (!transaction.isValid()) {
 				logger.info("Transacción errónea: " + transaction);
 			}
 			return MessageBuilder.withPayload(transaction).build();

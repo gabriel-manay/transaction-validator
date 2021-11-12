@@ -5,7 +5,7 @@ import com.accenture.errorHandling.InvalidField;
 
 public interface IValidation {
 
-	public boolean validate(Object value);
+	public boolean validate(Transaction transaction, Object object);
 
 	public Object getAttribute(Transaction transaction);
 

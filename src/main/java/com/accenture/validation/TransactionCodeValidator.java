@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 public class TransactionCodeValidator implements IValidation {
 
 	@Override
-	public boolean validate(Object value) {
+	public boolean validate(Transaction transaction, Object value) {
 		Integer transactionCode= (Integer) value;
 		return transactionCode == 5 | transactionCode == 6 | transactionCode == 8;
 	}

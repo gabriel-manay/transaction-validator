@@ -15,10 +15,17 @@ public class AccountNumberValidator implements IValidation {
 	ICardService cardService;
 	
     @Override
-    public boolean validate(Object value) {
+    public boolean validate(Transaction transaction, Object value) {
 
         String accountNumber = (String) value;
         accountNumber.substring(0, 5);
+        
+        //	TODO añadir manejo de error
+        if (false) {
+        	//	TODO cargar error de tabla maestra de errores
+        	transaction.addInvalidFieldError("Invalid Account Number");
+        }
+        
         return true;
     }
 
