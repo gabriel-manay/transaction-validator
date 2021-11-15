@@ -3,8 +3,7 @@ package com.accenture.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.accenture.validation.AccountNumberValidator;
-import com.accenture.validation.IValidation;
+import com.accenture.validation.*;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
@@ -52,8 +51,41 @@ public class Transaction {
 	public Transaction() {
 		this.validations = new ArrayList<IValidation>();
 		this.invalidFields = new ArrayList<String>();
-		
+
+		/*validations.add(new AccountNumberExtensionValidator());
 		validations.add(new AccountNumberValidator());
+		validations.add(new AcquirerBusinessIdValidator());
+		validations.add(new AcquirerReferenceNumberIndicatorValidator());
+		validations.add(new AuthorizationCharacteristicsIndicatorValidator());
+		validations.add(new AuthorizationCodeValidator());
+		validations.add(new CardholderIdMethodValidator());
+		validations.add(new CBRExceptionFileIndicator());
+		validations.add(new CentralProcessingDateValidator());
+		validations.add(new CollectionOnlyFlagValidator());
+		validations.add(new DestinationAmountValidator());
+		validations.add(new DestinationCurrencyCodeValidator());
+		validations.add(new FloorLimitIndicatorValidator());
+		validations.add(new MerchantCategoryCodeValidator());
+		validations.add(new MerchantCityValidator());
+		validations.add(new MerchantCountryCodeValidator());
+		validations.add(new MerchantNameValidator());
+		validations.add(new MerchantStateProvinceCode());
+		validations.add(new MerchantZIPCodeValidator());
+		validations.add(new NumberOfPaymentFormsValidator());
+		validations.add(new PCASIndicatorValidator());
+		validations.add(new POSEntryModeValidator());
+		validations.add(new POSTerminalCapabilityValidator());
+		validations.add(new PurchaseDateValidator());
+		validations.add(new ReasonCodeValidator());
+		validations.add(new ReimbursementAttributeValidator());
+		validations.add(new RequestedPaymentServiceValidator());
+		validations.add(new SettlementFlagValidator());
+		validations.add(new SourceAmountValidator());
+		validations.add(new SourceCurrencyCodeValidator());
+		validations.add(new TransactionCodeQualifierValidator());
+		validations.add(new TransactionCodeValidator());
+		validations.add(new TransactionComponentSequenceNumberValidator());
+		validations.add(new UsageCodeValidator());*/
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////

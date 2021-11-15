@@ -16,8 +16,7 @@ public class CardService implements ICardService {
 	ICardRepository cardRepository;
 
 	@Override
-	public Card getCardByBIN(Integer bin) {
+	public Card getCardByBIN(String bin) {
 		return cardRepository.getCardByBIN(bin);
 	}
-
 }

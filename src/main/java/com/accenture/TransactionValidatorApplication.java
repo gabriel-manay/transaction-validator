@@ -2,6 +2,7 @@ package com.accenture;
 
 import java.util.function.Function;
 
+import com.accenture.validation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -28,10 +29,47 @@ public class TransactionValidatorApplication {
 
 			Transaction transaction = (Transaction) message.getPayload();
 
-			logger.info("Transaccion recibida: " + transaction.toString());
+			if(transaction.getTransactionCode() != null){
+				logger.info("Transaccion recibida: " + transaction.toString());
+				transaction.addValidator(new AccountNumberExtensionValidator());
+				transaction.addValidator(new AccountNumberValidator());
+				transaction.addValidator(new AcquirerBusinessIdValidator());
+				transaction.addValidator(new AcquirerReferenceNumberIndicatorValidator());
+				transaction.addValidator(new AuthorizationCharacteristicsIndicatorValidator());
+				transaction.addValidator(new AuthorizationCodeValidator());
+				transaction.addValidator(new CardholderIdMethodValidator());
+				transaction.addValidator(new CBRExceptionFileIndicator());
+				transaction.addValidator(new CentralProcessingDateValidator());
+				transaction.addValidator(new CollectionOnlyFlagValidator());
+				transaction.addValidator(new DestinationAmountValidator());
+				transaction.addValidator(new DestinationCurrencyCodeValidator());
+				transaction.addValidator(new FloorLimitIndicatorValidator());
+				transaction.addValidator(new MerchantCategoryCodeValidator());
+				transaction.addValidator(new MerchantCityValidator());
+				transaction.addValidator(new MerchantCountryCodeValidator());
+				transaction.addValidator(new MerchantNameValidator());
+				transaction.addValidator(new MerchantStateProvinceCode());
+				transaction.addValidator(new MerchantZIPCodeValidator());
+				transaction.addValidator(new NumberOfPaymentFormsValidator());
+				transaction.addValidator(new PCASIndicatorValidator());
+				transaction.addValidator(new POSEntryModeValidator());
+				transaction.addValidator(new POSTerminalCapabilityValidator());
+				transaction.addValidator(new PurchaseDateValidator());
+				transaction.addValidator(new ReasonCodeValidator());
+				transaction.addValidator(new ReimbursementAttributeValidator());
+				transaction.addValidator(new RequestedPaymentServiceValidator());
+				transaction.addValidator(new SettlementFlagValidator());
+				transaction.addValidator(new SourceAmountValidator());
+				transaction.addValidator(new SourceCurrencyCodeValidator());
+				transaction.addValidator(new TransactionCodeQualifierValidator());
+				transaction.addValidator(new TransactionCodeValidator());
+				transaction.addValidator(new TransactionComponentSequenceNumberValidator());
+				transaction.addValidator(new UsageCodeValidator());
 
-			if (!transaction.isValid()) {
-				logger.info("########################## Transaccion erronea: " + transaction);
+				if (!transaction.isValid()) {
+					logger.info("Account Number " + transaction.getAccountNumber());
+					logger.info("########################## Transaccion erronea: " + transaction);
+				}
 			}
 			return MessageBuilder.withPayload(transaction).build();
 		};

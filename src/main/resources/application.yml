@@ -1,10 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    #url: jdbc:mysql://database-pruebas.cjelxo04j357.us-east-1.rds.amazonaws.com:3306/casosuso
     url: jdbc:mysql://mysql:3306/demo
-    username: root
-    password: rootpw
+    username: USER
+    password: PASS
   cloud:
     stream:
       bindings:

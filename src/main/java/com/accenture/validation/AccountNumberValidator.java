@@ -1,5 +1,7 @@
 package com.accenture.validation;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.accenture.entity.Transaction;
@@ -11,20 +13,21 @@ public class AccountNumberValidator implements IValidation {
 
 	@Autowired
 	ICardService cardService;
+
+    private Logger logger = LoggerFactory.getLogger(AccountNumberValidator.class);
 	
     @Override
     public boolean validate(Transaction transaction, Object value) {
 
-        String accountNumber = (String) value;
-        Integer bin = Integer.parseInt(accountNumber.substring(0, 5));
-        
+        String accountNumber = transaction.getAccountNumber();
+        String bin = accountNumber.substring(0, 6);
         //	TODO añadir manejo de error
-        if (cardService.getCardByBIN(bin) == null) {
+        if (cardService.getCardByBIN(bin) != null) {
         	//	TODO cargar error de tabla maestra de errores
-        	transaction.addInvalidFieldError("Invalid Account Number");
-            return false;
+        	return true;
         }
-        return true;
+        transaction.addInvalidFieldError("Invalid Account Number");
+        return false;
     }
 
     @Override

@@ -15,7 +15,7 @@ public class Card {
 	private Long clave;
 	
 	private BigInteger numtar;
-	private Integer bintar;
+	private String bintar;
 	private Integer codban;
 	private Integer codcasa;
 	private Integer numusu;
@@ -44,11 +44,11 @@ public class Card {
 		this.numtar = numtar;
 	}
 
-	public Integer getBintar() {
+	public String getBintar() {
 		return bintar;
 	}
 
-	public void setBintar(Integer bintar) {
+	public void setBintar(String bintar) {
 		this.bintar = bintar;
 	}
 
