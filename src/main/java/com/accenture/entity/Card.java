@@ -16,13 +16,13 @@ public class Card {
 	
 	private BigInteger numtar;
 	private String bintar;
-	private Integer codban;
-	private Integer codcasa;
-	private Integer numusu;
-	private Integer cvv;
-	private Integer catego;
+	private String codban;
+	private String codcasa;
+	private String numusu;
+	private String cvv;
+	private String catego;
 	private String tiptar;
-	private Date expdate;
+	private String expdate;
 	
 	public Card() {
 		
@@ -52,43 +52,43 @@ public class Card {
 		this.bintar = bintar;
 	}
 
-	public Integer getCodban() {
+	public String getCodban() {
 		return codban;
 	}
 
-	public void setCodban(Integer codban) {
+	public void setCodban(String codban) {
 		this.codban = codban;
 	}
 
-	public Integer getCodcasa() {
+	public String getCodcasa() {
 		return codcasa;
 	}
 
-	public void setCodcasa(Integer codcasa) {
+	public void setCodcasa(String codcasa) {
 		this.codcasa = codcasa;
 	}
 
-	public Integer getNumusu() {
+	public String getNumusu() {
 		return numusu;
 	}
 
-	public void setNumusu(Integer numusu) {
+	public void setNumusu(String numusu) {
 		this.numusu = numusu;
 	}
 
-	public Integer getCvv() {
+	public String getCvv() {
 		return cvv;
 	}
 
-	public void setCvv(Integer cvv) {
+	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
 
-	public Integer getCatego() {
+	public String getCatego() {
 		return catego;
 	}
 
-	public void setCatego(Integer catego) {
+	public void setCatego(String catego) {
 		this.catego = catego;
 	}
 
@@ -100,11 +100,11 @@ public class Card {
 		this.tiptar = tiptar;
 	}
 
-	public Date getExpdate() {
+	public String getExpdate() {
 		return expdate;
 	}
 
-	public void setExpdate(Date expdate) {
+	public void setExpdate(String expdate) {
 		this.expdate = expdate;
 	}
 
