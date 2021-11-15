@@ -9,7 +9,7 @@ import com.accenture.entity.Card;
 @Repository
 public interface ICardRepository extends CrudRepository<Card,Long> {
 	
-	@Query("SELECT * from Card c WHERE c.bintar = ?1")
+	@Query("SELECT c from Card c WHERE c.bintar = ?1")
 	public Card getCardByBIN(Integer bin);
 
 }

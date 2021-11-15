@@ -6,10 +6,10 @@ import com.accenture.entity.Transaction;
 public class PurchaseDateValidator implements IValidation{
     @Override
     public boolean validate(Transaction transaction, Object object) {
-        if(transaction.getPurchaseDate() >= 1300){
+      /*  if(transaction.getPurchaseDate() >= 1300){
             transaction.addInvalidFieldError("Invalid Purchase Date");
             return false;
-        }
+        }*/
         return true;
     }
 

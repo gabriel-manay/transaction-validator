@@ -6,11 +6,11 @@ import com.accenture.entity.Transaction;
 public class SourceAmountValidator implements IValidation{
     @Override
     public boolean validate(Transaction transaction, Object object) {
-        if(transaction.getSourceAmount() <= 10000000 || transaction.getSourceAmount() > 0){
+       /* if(transaction.getSourceAmount() <= 10000000 || transaction.getSourceAmount() > 0){
             return true;
         }
         transaction.addInvalidFieldError("Invalid Source Amount");
-        return false;
+        */return false;
     }
 
     @Override

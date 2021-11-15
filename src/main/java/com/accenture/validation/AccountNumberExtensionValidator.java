@@ -6,11 +6,11 @@ import com.accenture.entity.Transaction;
 public class AccountNumberExtensionValidator implements IValidation{
     @Override
     public boolean validate(Transaction transaction, Object object) {
-        if(transaction.getAccountNumberExtension() == 0){
+       /* if(transaction.getAccountNumberExtension() == 0){
             return true;
         }
         transaction.addInvalidFieldError("Invalid Account Number Extension");
-        return false;
+        */return false;
     }
 
     @Override

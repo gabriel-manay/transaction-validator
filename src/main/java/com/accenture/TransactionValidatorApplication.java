@@ -26,12 +26,12 @@ public class TransactionValidatorApplication {
 
 		return message -> {
 
-			Transaction transaction = message.getPayload();
+			Transaction transaction = (Transaction) message.getPayload();
 
 			logger.info("Transaccion recibida: " + transaction.toString());
 
 			if (!transaction.isValid()) {
-				logger.info("Transaccion erronea: " + transaction);
+				logger.info("########################## Transaccion erronea: " + transaction);
 			}
 			return MessageBuilder.withPayload(transaction).build();
 		};
