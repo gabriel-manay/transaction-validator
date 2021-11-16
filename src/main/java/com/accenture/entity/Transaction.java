@@ -14,6 +14,8 @@ public class Transaction implements Serializable {
 	
 	private List<String> invalidFields;
 
+	private String valid;
+
 	private String transactionCode; // 1-2
 	private String transactionCodeQualifier; // 3
 	private String transactionComponentSequenceNumber; // 4
@@ -343,30 +345,59 @@ public class Transaction implements Serializable {
 	public void setReimbursementAttribute(String reimbursementAttribute) {
 		this.reimbursementAttribute = reimbursementAttribute;
 	}
-	
+
+	public String getValid() {
+		return valid;
+	}
+
+	public void setValid(String valid) {
+		this.valid = valid;
+	}
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 	@Override
 	public String toString() {
-		return "Transaction [transactionCode=" + transactionCode + ", transactionCodeQualifier="
-				+ transactionCodeQualifier + ", transactionComponentSequenceNumber="
-				+ transactionComponentSequenceNumber + ", accountNumber=" + accountNumber + ", accountNumberExtension="
-				+ accountNumberExtension + ", floorLimitIndicator=" + floorLimitIndicator
-				+ ", crbExceptionFileIndicator=" + crbExceptionFileIndicator + ", PCASIndicator=" + PCASIndicator
-				+ ", acquirerReferenceNumber=" + acquirerReferenceNumber + ", acquirersBusinessID="
-				+ acquirersBusinessID + ", purchaseDate=" + purchaseDate + ", destinationAmount=" + destinationAmount
-				+ ", destinationCurrencyCode=" + destinationCurrencyCode + ", sourceAmount=" + sourceAmount
-				+ ", sourceCurrencyCode=" + sourceCurrencyCode + ", merchantName=" + merchantName + ", merchantCity="
-				+ merchantCity + ", merchantCountryCode=" + merchantCountryCode + ", merchantCategoryCode="
-				+ merchantCategoryCode + ", merchantZIPCode=" + merchantZIPCode + ", merchantStateProvinceCode="
-				+ merchantStateProvinceCode + ", requestedPaymentService=" + requestedPaymentService
-				+ ", numberOfPaymentForms=" + numberOfPaymentForms + ", usageCode=" + usageCode + ", reasonCode="
-				+ reasonCode + ", settlementFlag=" + settlementFlag + ", authorizationCharacteristicsIndicator="
-				+ authorizationCharacteristicsIndicator + ", authorizationCode=" + authorizationCode
-				+ ", POSTerminalCapability=" + POSTerminalCapability + ", reserved=" + reserved
-				+ ", cardholderIDMethod=" + cardholderIDMethod + ", collectionOnlyFlag=" + collectionOnlyFlag
-				+ ", POSEntryMode=" + POSEntryMode + ", centralProcessingDate=" + centralProcessingDate
-				+ ", reimbursementAttribute=" + reimbursementAttribute + "]";
+		return "Transaction{" +
+				"invalidFields=" + invalidFields +
+				", valid=" + valid +
+				", transactionCode='" + transactionCode + '\'' +
+				", transactionCodeQualifier='" + transactionCodeQualifier + '\'' +
+				", transactionComponentSequenceNumber='" + transactionComponentSequenceNumber + '\'' +
+				", accountNumber='" + accountNumber + '\'' +
+				", accountNumberExtension='" + accountNumberExtension + '\'' +
+				", floorLimitIndicator='" + floorLimitIndicator + '\'' +
+				", crbExceptionFileIndicator='" + crbExceptionFileIndicator + '\'' +
+				", PCASIndicator='" + PCASIndicator + '\'' +
+				", acquirerReferenceNumber='" + acquirerReferenceNumber + '\'' +
+				", acquirersBusinessID='" + acquirersBusinessID + '\'' +
+				", purchaseDate='" + purchaseDate + '\'' +
+				", destinationAmount='" + destinationAmount + '\'' +
+				", destinationCurrencyCode='" + destinationCurrencyCode + '\'' +
+				", sourceAmount='" + sourceAmount + '\'' +
+				", sourceCurrencyCode='" + sourceCurrencyCode + '\'' +
+				", merchantName='" + merchantName + '\'' +
+				", merchantCity='" + merchantCity + '\'' +
+				", merchantCountryCode='" + merchantCountryCode + '\'' +
+				", merchantCategoryCode='" + merchantCategoryCode + '\'' +
+				", merchantZIPCode='" + merchantZIPCode + '\'' +
+				", merchantStateProvinceCode='" + merchantStateProvinceCode + '\'' +
+				", requestedPaymentService='" + requestedPaymentService + '\'' +
+				", numberOfPaymentForms='" + numberOfPaymentForms + '\'' +
+				", usageCode='" + usageCode + '\'' +
+				", reasonCode='" + reasonCode + '\'' +
+				", settlementFlag='" + settlementFlag + '\'' +
+				", authorizationCharacteristicsIndicator='" + authorizationCharacteristicsIndicator + '\'' +
+				", authorizationCode='" + authorizationCode + '\'' +
+				", POSTerminalCapability='" + POSTerminalCapability + '\'' +
+				", reserved='" + reserved + '\'' +
+				", cardholderIDMethod='" + cardholderIDMethod + '\'' +
+				", collectionOnlyFlag='" + collectionOnlyFlag + '\'' +
+				", POSEntryMode='" + POSEntryMode + '\'' +
+				", centralProcessingDate='" + centralProcessingDate + '\'' +
+				", reimbursementAttribute='" + reimbursementAttribute + '\'' +
+				'}';
 	}
 
 	public void addInvalidFieldError(String error) {

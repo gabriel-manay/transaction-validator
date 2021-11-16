@@ -34,7 +34,7 @@ public class TransactionValidatorApplication {
 	}
 
 	@Bean
-	public Function<Message<Transaction>, Message<Transaction>> validate() {
+	public Function<Message<?>, Message<?>> validate() {
 
 		validations = new ArrayList<IValidation>();
 		validations.add(accountNumberValidator);
@@ -43,18 +43,25 @@ public class TransactionValidatorApplication {
 		
 		return message -> {
 
-			Transaction transaction = (Transaction) message.getPayload();
+			if(!message.getPayload().equals("No more lines")){
+				Transaction transaction = (Transaction) message.getPayload();
 
-			if (isValidTransaction(transaction)) {
+				if (isValidTransaction(transaction)) {
 
-				logger.info("Transaccion recibida: " + transaction.toString());
+					logger.info("Transaccion recibida: " + transaction.toString());
 
-				if (!transaction.isValid(validations)) {
-					logger.info("Account Number " + transaction.getAccountNumber());
-					logger.info("########################## Transaccion erronea: " + transaction);
+					//transaction.setValid("Valid");
+
+					if (!transaction.isValid(validations)) {
+						transaction.setValid("Invalid");
+						logger.info("Account Number " + transaction.getAccountNumber());
+						logger.info("########################## Transaccion erronea: " + transaction);
+					}else{
+						transaction.setValid("Valid");
+					}
 				}
 			}
-			return MessageBuilder.withPayload(transaction).build();
+			return MessageBuilder.withPayload(message).build();
 		};
 
 	}
