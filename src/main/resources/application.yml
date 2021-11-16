@@ -1,9 +1,11 @@
 spring:
+  jpa:
+    database: mysql
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://mysql:3306/demo
-    username: USER
-    password: PASS
+    username: root
+    password: rootpw
   cloud:
     stream:
       bindings:
@@ -12,6 +14,12 @@ spring:
         validate-out-0:
           destination: channel02
 
+hibernate:
+  dialect: org.hibernate.dialect.MySQL5Dialect
+  show_sql: true
+  hbm2ddl:
+    auto:validate
+          
 management:
   endpoints:
     web:
