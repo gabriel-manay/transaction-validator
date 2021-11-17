@@ -2,6 +2,7 @@ package com.accenture;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 
 import org.slf4j.Logger;
@@ -34,7 +35,7 @@ public class TransactionValidatorApplication {
 	}
 
 	@Bean
-	public Function<Message<?>, Message<?>> validate() {
+	public Function<Message<Transaction>, Message<Transaction>> validate() {
 
 		validations = new ArrayList<IValidation>();
 		validations.add(accountNumberValidator);
@@ -42,10 +43,9 @@ public class TransactionValidatorApplication {
 		logger.info("############################# VALIDACIONES: {}",validations.toString());
 		
 		return message -> {
+			Transaction transaction = (Transaction) message.getPayload();
 
-			if(!message.getPayload().equals("No more lines")){
-				Transaction transaction = (Transaction) message.getPayload();
-
+			if(!Objects.equals(transaction.getTransactionCode(), "AA")){
 				if (isValidTransaction(transaction)) {
 
 					logger.info("Transaccion recibida: " + transaction.toString());
@@ -60,10 +60,9 @@ public class TransactionValidatorApplication {
 						transaction.setValid("Valid");
 					}
 				}
-			}
-			return MessageBuilder.withPayload(message).build();
+			};
+			return MessageBuilder.withPayload(transaction).build();
 		};
-
 	}
 
 	private boolean isValidTransaction(Transaction transaction) {
