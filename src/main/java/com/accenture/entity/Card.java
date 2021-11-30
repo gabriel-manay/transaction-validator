@@ -23,9 +23,22 @@ public class Card {
 	private String catego;
 	private String tiptar;
 	private String expdate;
-	
+
 	public Card() {
-		
+	}
+
+	public Card(Long clave, BigInteger numtar, String bintar, String codban, String codcasa, String numusu, String cvv,
+				String catego, String tiptar, String expdate) {
+		this.clave = clave;
+		this.numtar = numtar;
+		this.bintar = bintar;
+		this.codban = codban;
+		this.codcasa = codcasa;
+		this.numusu = numusu;
+		this.cvv = cvv;
+		this.catego = catego;
+		this.tiptar = tiptar;
+		this.expdate = expdate;
 	}
 
 	public Long getClave() {

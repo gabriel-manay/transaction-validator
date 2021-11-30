@@ -3,9 +3,9 @@ spring:
     database: mysql
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql:3306/demo
-    username: root
-    password: rootpw
+    url: jdbc:mysql://database-pruebas.cjelxo04j357.us-east-1.rds.amazonaws.com:3306/casouso
+    username: admin
+    password: admin123
   cloud:
     stream:
       bindings:
@@ -13,12 +13,11 @@ spring:
           destination: channel01
         validate-out-0:
           destination: channel02
-
 hibernate:
   dialect: org.hibernate.dialect.MySQL5Dialect
   show_sql: true
   hbm2ddl:
-    auto:validate
+    auto: validate
           
 management:
   endpoints:

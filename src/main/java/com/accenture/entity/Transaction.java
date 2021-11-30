@@ -51,7 +51,46 @@ public class Transaction implements Serializable {
 	private String POSEntryMode; // 162-163
 	private String centralProcessingDate; // 164-167
 	private String reimbursementAttribute; // 168
-	
+
+	public Transaction(String transactionCode, String transactionCodeQualifier, String transactionComponentSequenceNumber, String accountNumber, String accountNumberExtension, String floorLimitIndicator, String crbExceptionFileIndicator, String PCASIndicator, String acquirerReferenceNumber, String acquirersBusinessID, String purchaseDate, String destinationAmount, String destinationCurrencyCode, String sourceAmount, String sourceCurrencyCode, String merchantName, String merchantCity, String merchantCountryCode, String merchantCategoryCode, String merchantZIPCode, String merchantStateProvinceCode, String requestedPaymentService, String numberOfPaymentForms, String usageCode, String reasonCode, String settlementFlag, String authorizationCharacteristicsIndicator, String authorizationCode, String POSTerminalCapability, String reserved, String cardholderIDMethod, String collectionOnlyFlag, String POSEntryMode, String centralProcessingDate, String reimbursementAttribute) {
+		this.transactionCode = transactionCode;
+		this.transactionCodeQualifier = transactionCodeQualifier;
+		this.transactionComponentSequenceNumber = transactionComponentSequenceNumber;
+		this.accountNumber = accountNumber;
+		this.accountNumberExtension = accountNumberExtension;
+		this.floorLimitIndicator = floorLimitIndicator;
+		this.crbExceptionFileIndicator = crbExceptionFileIndicator;
+		this.PCASIndicator = PCASIndicator;
+		this.acquirerReferenceNumber = acquirerReferenceNumber;
+		this.acquirersBusinessID = acquirersBusinessID;
+		this.purchaseDate = purchaseDate;
+		this.destinationAmount = destinationAmount;
+		this.destinationCurrencyCode = destinationCurrencyCode;
+		this.sourceAmount = sourceAmount;
+		this.sourceCurrencyCode = sourceCurrencyCode;
+		this.merchantName = merchantName;
+		this.merchantCity = merchantCity;
+		this.merchantCountryCode = merchantCountryCode;
+		this.merchantCategoryCode = merchantCategoryCode;
+		this.merchantZIPCode = merchantZIPCode;
+		this.merchantStateProvinceCode = merchantStateProvinceCode;
+		this.requestedPaymentService = requestedPaymentService;
+		this.numberOfPaymentForms = numberOfPaymentForms;
+		this.usageCode = usageCode;
+		this.reasonCode = reasonCode;
+		this.settlementFlag = settlementFlag;
+		this.authorizationCharacteristicsIndicator = authorizationCharacteristicsIndicator;
+		this.authorizationCode = authorizationCode;
+		this.POSTerminalCapability = POSTerminalCapability;
+		this.reserved = reserved;
+		this.cardholderIDMethod = cardholderIDMethod;
+		this.collectionOnlyFlag = collectionOnlyFlag;
+		this.POSEntryMode = POSEntryMode;
+		this.centralProcessingDate = centralProcessingDate;
+		this.reimbursementAttribute = reimbursementAttribute;
+		this.invalidFields=new ArrayList<String>();
+	}
+
 	public Transaction() {
 		this.invalidFields = new ArrayList<String>();
 	}
